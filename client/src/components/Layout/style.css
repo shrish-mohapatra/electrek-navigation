@@ -1,0 +1,18 @@
+.layout {
+    padding: 48px;
+}
+
+.title {
+    padding-bottom: 48px;
+}
+
+.title h1 {
+    font-size: 36px;
+    line-height: 0.1;
+}
+
+.title h2 {
+    font-size: 16px;
+    line-height: 0;
+    color: var(--active);
+}
