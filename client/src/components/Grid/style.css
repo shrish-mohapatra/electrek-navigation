@@ -1,0 +1,25 @@
+.grid {
+    position: absolute;
+    top: 150px;
+    left: -196px;
+    /* z-index: -1; */
+}
+
+.cell {
+    float: left;
+    display: table-cell;
+    margin: 1px;
+    box-shadow: 4px 9px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cell:hover {
+    background-color: var(--active);
+}
+
+.road {
+    background-color: var(--road);
+}
+
+.building {
+    background-color: var(--building);
+}

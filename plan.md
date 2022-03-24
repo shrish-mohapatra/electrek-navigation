@@ -1,4 +1,4 @@
-[LEGEND]
+## LEGEND
 dark blue - start
 cyan - end
 
@@ -8,7 +8,7 @@ orange - super charger
 ----
 
 
-[heuristic function ideas]
+## heuristic function ideas
 
 ignore road blocks -> manhattan distance (diff in x, y)
 
@@ -50,15 +50,17 @@ h_2(n) = |x1 - x2| + |y1 - y2| + <factor takes into account the actual charger>
 
 --- 
 
-[SUBGOALS]
+## SUBGOALS
 
 1. implement iterative A* for finding path to a goal
+    - `plan_trip()`
     - representation of grid
     - no chargers
     - lowkey first assignment
 
 2. add chargers & battery
     - charges to 100%
+    - add heuristics for this
 
 3. generate road algorithm (recursive backtracking)
 

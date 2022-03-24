@@ -2,13 +2,21 @@
 
 /* Color variables */
 :root {
-  --active: #21ac7e;
-  --bg: #fff;
-  --text: rgb(26, 26, 26);
+  --active: #A788FF;
+  --bg: linear-gradient(180deg, #222429 0%, #151516 100%);
+  --panel: rgba(30, 33, 37, 0.79);
+  --text: rgb(214, 214, 214);
+  --road: #292C31;
+  --building: #6A727E;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
+  background: var(--bg);
   color: var(--text);
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
