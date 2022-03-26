@@ -4,7 +4,7 @@ import "./style.css"
 
 // Grid parameters
 const NUM_ROWS = 20
-const NUM_COLS = 70
+const NUM_COLS = 65
 
 const CELL_SIZE = 32
 const CELL_MARGIN = 1

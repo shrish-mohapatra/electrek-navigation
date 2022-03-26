@@ -6,7 +6,10 @@ export const NavProvider = ({ children }) => {
     return (
         <NavContext.Provider
             value={{
-                test: "context works properly :)"
+                test: "context works properly :)",
+
+                start_x: 0,
+                start_y: 0
             }}
         >
             {children}

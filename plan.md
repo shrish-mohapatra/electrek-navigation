@@ -67,3 +67,39 @@ h_2(n) = |x1 - x2| + |y1 - y2| + <factor takes into account the actual charger>
 4. dynamic charge time****
 
 5. visualize with react
+
+---
+
+## Coding time
+
+3 classes
+- node
+- problem
+- solution
+
+
+
+
+
+
+
+
+0 = road
+1 = building
+2 = pos of car
+3 = goal
+
+[2,0,0,0,0],
+[0,1,1,1,0],
+[0,1,1,1,0],
+[0,0,0,0,3],
+
+Node 0 = pos={x:0,y:0}
+Node g = pos={x:4,y:3}
+
+[0,2,0,0,0],
+[0,1,1,1,0],
+[0,1,1,1,0],
+[0,0,0,0,3],
+
+Node 1 = {x:1,y:0}
