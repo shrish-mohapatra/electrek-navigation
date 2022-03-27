@@ -2,6 +2,8 @@
     width: 400px;
     height: 600px;
     padding: 48px;
+    padding-left: 60px;
+    padding-right: 10px;
     background: var(--panel);
     backdrop-filter: blur(2px);
     border-radius: 12px;
@@ -10,5 +12,48 @@
 }
 
 .panel-title {
-    font-weight: lighter;
+    font-weight: 500;
+}
+
+.panel-sub-title {
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+.disabled-panel-sub-title {  
+    opacity: 0.2;
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+.panel-description {
+    font-weight: 100;
+    font-size: small;
+    margin: 0;
+}
+.disabled-panel-description {
+    opacity: 0.2;
+    font-weight: 100;
+    font-size: small;
+    margin: 0;
+}
+.text-field{
+    outline-color: var(--text-field);
+}
+
+.grid-container {
+    position: relative;
+}
+
+.circle {
+    height: 30px;
+    width: 30px;
+    background-color: #A788FF;
+    border-radius: 50%;
+    color: 'white';
+}
+
+.circle-text {
+    position: absolute;
+    left: 10; 
+    top: 6;
+    color: white;
 }
