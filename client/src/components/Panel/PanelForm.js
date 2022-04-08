@@ -103,6 +103,7 @@ const PanelForm = ({ qState, setQState }) => {
         endX, setEndX,
         endY, setEndY,
         startBattery, setStartBattery,
+        simulateTrip
     } = useContext(NavContext)
 
     const classes = useStyles()
@@ -253,7 +254,14 @@ const PanelForm = ({ qState, setQState }) => {
                 />
             </Grid>
             <Grid item xs={12}>
-                <ColorButton disabled={qState.includes("plan") ? false : true} className={classes.planButton} variant="contained">Plan Trip</ColorButton>
+                <ColorButton
+                    disabled={qState.includes("plan") ? false : true}
+                    className={classes.planButton}
+                    variant="contained"
+                    onClick={simulateTrip}
+                >
+                    Plan Trip
+                </ColorButton>
             </Grid>
         </Grid>
     );

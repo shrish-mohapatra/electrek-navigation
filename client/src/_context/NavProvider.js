@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import produce from "immer"
-import { createEmptyBoard, NUM_ROWS, NUM_COLS } from './NavHelper'
+import { createEmptyBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
 
 export const NavContext = createContext()
 
@@ -17,6 +17,8 @@ export const NavProvider = ({ children }) => {
     const [endY, setEndY] = useState("");
 
     const [startBattery, setStartBattery] = useState("");
+
+    const [carPos, setCarPos] = useState()
 
     useEffect(() => {
         if(startX && startY) {
@@ -49,6 +51,10 @@ export const NavProvider = ({ children }) => {
         return true
     }
 
+    const timeout = (delay) => {
+        return new Promise(res => setTimeout(res, delay))
+    }
+
     return (
         <NavContext.Provider
             value={{
@@ -58,6 +64,8 @@ export const NavProvider = ({ children }) => {
                 endX, setEndX,
                 endY, setEndY,
                 startBattery, setStartBattery,
+
+                carPos, setCarPos,
 
                 onGridSelect: (row, col) => {
                     if (!boundsCheck(row, col)) return
@@ -69,6 +77,19 @@ export const NavProvider = ({ children }) => {
                         setEndX(col)
                         setEndY(row)
                     }
+                },
+
+                simulateTrip: async () => {
+                    const trip = "dddrrrcccrrrrrdddddddddd"                    
+                    const positions = generatePositions(trip, [startY, startX])
+
+                    for(let p in positions) {
+                        setCarPos(positions[p])
+                        await timeout(1000)
+                    }
+
+                    alert('trip finished')
+
                 }
             }}
         >

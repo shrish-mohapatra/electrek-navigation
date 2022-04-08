@@ -10,10 +10,14 @@
     display: table-cell;
     margin: 1px;
     box-shadow: 4px 9px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
 .cell:hover {
-    background-color: var(--active);
+    background-color: var(--text);
 }
 
 .road {
@@ -30,4 +34,8 @@
 
 .dest {
     background-color: var(--dest);
+}
+
+.charge {
+    background-color: var(--charge);
 }

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { NavContext } from '../../_context/NavProvider'
 import "./style.css"
 
@@ -9,14 +10,14 @@ const NUM_COLS = 65
 const CELL_SIZE = 32
 const CELL_MARGIN = 1
 
-const CELL_MAP = ['road', 'building', 'start', 'dest']
+const CELL_MAP = ['road', 'building', 'start', 'dest', 'charge']
 
 const ISO_X = 20;
 const ISO_Y = -25;
 const ISO_Z = 8.8;
 
 function Grid() {
-    const {grid, onGridSelect} = useContext(NavContext)
+    const {grid, onGridSelect, carPos} = useContext(NavContext)
 
     return (
         <div className='grid'>
@@ -40,7 +41,9 @@ function Grid() {
                                     key={`[${i},${j}]`}
                                     style={{ width: CELL_SIZE, height: CELL_SIZE }}
                                     onClick={() => onGridSelect(i, j)}
-                                />
+                                >
+                                    {carPos && carPos[0] == i && carPos[1] == j ? <DirectionsCarIcon/> : null}
+                                </div>
                             )
                         })
                     ))
