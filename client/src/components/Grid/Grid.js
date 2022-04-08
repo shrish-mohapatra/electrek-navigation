@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import produce from "immer"
+import React, { useContext, useState } from 'react'
+import { NavContext } from '../../_context/NavProvider'
 import "./style.css"
 
 // Grid parameters
@@ -9,35 +9,14 @@ const NUM_COLS = 65
 const CELL_SIZE = 32
 const CELL_MARGIN = 1
 
-const CELL_MAP = ['road', 'building']
+const CELL_MAP = ['road', 'building', 'start', 'dest']
 
 const ISO_X = 20;
 const ISO_Y = -25;
 const ISO_Z = 8.8;
 
-const createEmptyBoard = (fill) => {
-    let grid = []
-
-    if (!fill) fill = () => 0
-
-    for (let i = 0; i < NUM_ROWS; i++) {
-        grid.push(Array.from(Array(NUM_COLS), fill))
-    }
-
-    return grid
-}
-
 function Grid() {
-    const [grid, setGrid] = useState(() => {
-        return createEmptyBoard()
-    })
-
-    const updateGrid = (row, col, fill) => {
-        setGrid(g => produce(g, gridCopy => {
-            gridCopy[row][col] = g[row][col] ? 0 : 1
-            console.log(g)
-        }))
-    }
+    const {grid, onGridSelect} = useContext(NavContext)
 
     return (
         <div className='grid'>
@@ -60,7 +39,7 @@ function Grid() {
                                     className={cls}
                                     key={`[${i},${j}]`}
                                     style={{ width: CELL_SIZE, height: CELL_SIZE }}
-                                    onClick={() => updateGrid(i, j, 1)}
+                                    onClick={() => onGridSelect(i, j)}
                                 />
                             )
                         })

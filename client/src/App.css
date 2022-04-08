@@ -6,8 +6,12 @@
   --bg: linear-gradient(180deg, #222429 0%, #151516 100%);
   --panel: rgba(30, 33, 37, 0.79);
   --text: rgb(214, 214, 214);
+
   --road: #292C31;
   --building: #6A727E;
+  --start: #47BF34;
+  --dest: #BF347F;
+
   --font-family: 'Inter', sans-serif;
   --text-field: rgb(255, 255, 255);
 }

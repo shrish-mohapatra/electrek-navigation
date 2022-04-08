@@ -23,3 +23,11 @@
 .building {
     background-color: var(--building);
 }
+
+.start {
+    background-color: var(--start);
+}
+
+.dest {
+    background-color: var(--dest);
+}
