@@ -1,13 +1,16 @@
 import React, { createContext, useEffect, useState } from 'react'
 import produce from "immer"
-import { createEmptyBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
+import { generateBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
+
+import Problem from './NavAPI/Problem'
+import Solution from './NavAPI/Solution'
 
 export const NavContext = createContext()
 
 export const NavProvider = ({ children }) => {
     
     const [grid, setGrid] = useState(() => {
-        return createEmptyBoard()
+        return generateBoard()
     })
 
     const [startX, setStartX] = useState("");
@@ -19,6 +22,15 @@ export const NavProvider = ({ children }) => {
     const [startBattery, setStartBattery] = useState("");
 
     const [carPos, setCarPos] = useState()
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true)
+        setTimeout(() => {
+            setOpen(false)
+          }, 3000);
+    }
 
     useEffect(() => {
         if(startX && startY) {
@@ -34,11 +46,11 @@ export const NavProvider = ({ children }) => {
         if (!boundsCheck(row, col)) return
 
         setGrid(g => produce(g, gridCopy => {
-                for(let r in g) {
-                    for(let c in g[r]) {
-                        gridCopy[r][c] = gridCopy[r][c] == fill ? 0 : gridCopy[r][c]
-                    }
-                }
+                // for(let r in g) {
+                //     for(let c in g[r]) {
+                //         gridCopy[r][c] = gridCopy[r][c] == fill ? 0 : gridCopy[r][c]
+                //     }
+                // }
 
                 gridCopy[row][col] = fill
             }
@@ -66,6 +78,7 @@ export const NavProvider = ({ children }) => {
                 startBattery, setStartBattery,
 
                 carPos, setCarPos,
+                open, handleOpen,
 
                 onGridSelect: (row, col) => {
                     if (!boundsCheck(row, col)) return
@@ -80,15 +93,27 @@ export const NavProvider = ({ children }) => {
                 },
 
                 simulateTrip: async () => {
-                    const trip = "dddrrrcccrrrrrdddddddddd"                    
-                    const positions = generatePositions(trip, [startY, startX])
+                    
+                    console.log({x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
+                    
+                    let problem = new Problem(grid, {x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
+                    let solution = new Solution(problem)
 
-                    for(let p in positions) {
+                    let trip = solution.astar()
+                  
+                    const positions = generatePositions(trip, [parseInt(startY), parseInt(startX)])
+
+                    console.log(grid)
+                    console.log(positions)
+                    console.log(trip)
+
+                    for(let p=0; p< positions.length; p++) {
                         setCarPos(positions[p])
+                        updateGrid(positions[p][0], positions[p][1], 5)
                         await timeout(1000)
                     }
 
-                    alert('trip finished')
+                    handleOpen()
 
                 }
             }}

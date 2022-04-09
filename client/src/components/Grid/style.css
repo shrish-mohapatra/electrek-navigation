@@ -39,3 +39,7 @@
 .charge {
     background-color: var(--charge);
 }
+
+.visited {
+    background-color: rgb(162, 180, 249);
+}

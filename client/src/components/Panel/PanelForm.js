@@ -96,7 +96,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
 }));
 
-const PanelForm = ({ qState, setQState }) => {
+const PanelForm = () => {
     const {
         startX, setStartX,
         startY, setStartY,
@@ -115,36 +115,16 @@ const PanelForm = ({ qState, setQState }) => {
         return false
     }
 
-    useEffect(() => {
-        if (startX && startY && endX && endY && startBattery) {
-            setQState(["start", "goal", "battery", "plan"])
-        } else if (startX && startY && endX && endY) {
-            setQState(["start", "goal", "battery"])
-        } else if (startX && startY) {
-            setQState(["start", "goal"])
-        } else {
-            setQState(["start"])
-        }
-
-    }, [startX, startY, endX, endY, startBattery, setQState]);
-
-
-
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={12} className={classes.gridContainer}>
-                {qState.includes("start") ?
                     <Box className={classes.circle}>
                         {(startX && startY) ? <CheckIcon className={classes.checkIcon} /> : <span className={classes.numberLabel} >1</span>}
-                    </Box> :
-                    <Box className={classes.disabledCircle}>
-                        <span className={classes.disabledNumberLabel}>1</span>
-                    </Box>
-                }
-                <h3 className={qState.includes("start") ? "panel-sub-title" : "disabled-panel-sub-title"}>
+                    </Box> 
+                <h3 className={"panel-sub-title"}>
                     Choose starting point
                 </h3>
-                <h4 className={qState.includes("start") ? "panel-description" : "disabled-panel-description"}>
+                <h4 className={"panel-description"}>
                     Select a vaild cell on the map or input the coordinates here.
                 </h4>
             </Grid>
@@ -153,8 +133,8 @@ const PanelForm = ({ qState, setQState }) => {
                     required
                     id="outlined-required"
                     placeholder="Longitude"
-                    disabled={qState.includes("start") ? false : true}
-                    className={qState.includes("start") ? classes.textField : classes.disabledTextField}
+                    disabled={false}
+                    className={classes.textField}
                     value={startX}
                     onChange={(e) => CheckInt(e) && setStartX(e.target.value)}
                     inputProps={{
@@ -168,8 +148,8 @@ const PanelForm = ({ qState, setQState }) => {
                     id="outlined-required"
                     placeholder="Latitude"
                     value={startY}
-                    disabled={qState.includes("start") ? false : true}
-                    className={qState.includes("start") ? classes.textField : classes.disabledTextField}
+                    disabled={false}
+                    className={classes.textField}
                     onChange={(e) => CheckInt(e) && setStartY(e.target.value)}
 
                     inputProps={{
@@ -178,7 +158,7 @@ const PanelForm = ({ qState, setQState }) => {
                 />
             </Grid>
             <Grid item xs={12} className={classes.gridContainer}>
-                {qState.includes("goal") ?
+                {startX && startY ?
                     <Box className={classes.circle}>
                         {(startX && startY && endX && endY) ? <CheckIcon className={classes.checkIcon} /> : <span className={classes.numberLabel} >2</span>}
                     </Box> :
@@ -186,10 +166,10 @@ const PanelForm = ({ qState, setQState }) => {
                         {(startX && startY && endX && endY) ? <CheckIcon className={classes.checkIcon} /> : <span className={classes.numberLabel} >2</span>}
                     </Box>
                 }
-                <h3 className={qState.includes("goal") ? "panel-sub-title" : "disabled-panel-sub-title"}>
+                <h3 className={startX && startY ? "panel-sub-title" : "disabled-panel-sub-title"}>
                     Choose destination
                 </h3>
-                <h4 className={qState.includes("goal") ? "panel-description" : "disabled-panel-description"}>
+                <h4 className={startX && startY ? "panel-description" : "disabled-panel-description"}>
                     Select a vaild cell on the map or input the coordinates here.
                 </h4>
             </Grid>
@@ -199,8 +179,8 @@ const PanelForm = ({ qState, setQState }) => {
                     id="outlined-required"
                     placeholder="Longitude"
                     value={endX}
-                    disabled={qState.includes("goal") ? false : true}
-                    className={qState.includes("goal") ? classes.textField : classes.disabledTextField}
+                    disabled={startX && startY ? false : true}
+                    className={startX && startY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setEndX(e.target.value)}
 
                     inputProps={{
@@ -214,8 +194,8 @@ const PanelForm = ({ qState, setQState }) => {
                     id="outlined-required"
                     placeholder="Latitude"
                     value={endY}
-                    disabled={qState.includes("goal") ? false : true}
-                    className={qState.includes("goal") ? classes.textField : classes.disabledTextField}
+                    disabled={startX && startY ? false : true}
+                    className={startX && startY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setEndY(e.target.value)}
 
                     inputProps={{
@@ -224,7 +204,7 @@ const PanelForm = ({ qState, setQState }) => {
                 />
             </Grid>
             <Grid item xs={12} className="grid-container">
-                {qState.includes("battery") ?
+                {startX && startY && endX && endY ?
                     <Box className={classes.circle}>
                         {(startX && startY && endX && endY && startBattery) ? <CheckIcon className={classes.checkIcon} /> : <span className={classes.numberLabel} >3</span>}
                     </Box> :
@@ -232,10 +212,10 @@ const PanelForm = ({ qState, setQState }) => {
                         {<span className={classes.disabledNumberLabel} >3</span>}
                     </Box>
                 }
-                <h3 className={qState.includes("battery") ? "panel-sub-title" : "disabled-panel-sub-title"}>
+                <h3 className={startX && startY && endX && endY ? "panel-sub-title" : "disabled-panel-sub-title"}>
                     Choose battery charge
                 </h3>
-                <h4 className={qState.includes("battery") ? "panel-description" : "disabled-panel-description"}>
+                <h4 className={startX && startY && endX && endY ? "panel-description" : "disabled-panel-description"}>
                     Select a vaild cell on the map or input the coordinates here.
                 </h4>
             </Grid>
@@ -245,8 +225,8 @@ const PanelForm = ({ qState, setQState }) => {
                     id="outlined-required"
                     placeholder="%"
                     value={startBattery}
-                    disabled={qState.includes("battery") ? false : true}
-                    className={qState.includes("battery") ? classes.textField : classes.disabledTextField}
+                    disabled={startX && startY && endX && endY ? false : true}
+                    className={startX && startY && endX && endY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setStartBattery(e.target.value)}
                     inputProps={{
                         style: { color: "white" }
@@ -255,7 +235,7 @@ const PanelForm = ({ qState, setQState }) => {
             </Grid>
             <Grid item xs={12}>
                 <ColorButton
-                    disabled={qState.includes("plan") ? false : true}
+                    disabled={startX && startY && endX && endY && startBattery ? false : true}
                     className={classes.planButton}
                     variant="contained"
                     onClick={simulateTrip}

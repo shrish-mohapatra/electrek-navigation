@@ -10,7 +10,7 @@ const NUM_COLS = 65
 const CELL_SIZE = 32
 const CELL_MARGIN = 1
 
-const CELL_MAP = ['road', 'building', 'start', 'dest', 'charge']
+const CELL_MAP = ['road', 'building', 'start', 'dest', 'charge', 'visited']
 
 const ISO_X = 20;
 const ISO_Y = -25;
@@ -40,7 +40,7 @@ function Grid() {
                                     className={cls}
                                     key={`[${i},${j}]`}
                                     style={{ width: CELL_SIZE, height: CELL_SIZE }}
-                                    onClick={() => onGridSelect(i, j)}
+                                    onClick={() => onGridSelect(parseInt(i), parseInt(j))}
                                 >
                                     {carPos && carPos[0] == i && carPos[1] == j ? <DirectionsCarIcon/> : null}
                                 </div>

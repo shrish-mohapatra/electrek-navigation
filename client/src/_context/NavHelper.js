@@ -36,6 +36,31 @@ export const createEmptyBoard = (fill) => {
     return grid
 }
 
+export const generateBoard = () => {
+    let grid = []
+
+    for(let i = 0; i < NUM_ROWS; i++) {
+        const row = Array.from(Array(NUM_COLS), () => 0)
+
+        for(let j=0; j < NUM_COLS; j++) {
+            let rand = Math.random()
+            if(i % 2 == 0 && j % 2 == 0) {
+                row[j] = 1
+            }
+            if (i%2 != j%2 && rand < 0.2) {
+                row[j] = 1
+            }
+            if (row[j] !=0 && rand < 0.01) {
+                row[j] = 4
+            }
+        }
+
+        grid.push(row)
+    }
+
+    return grid
+}
+
 export const generatePositions = (route, start) => {
     // Take route string (ex. "ulllpd") and return array of positions
 

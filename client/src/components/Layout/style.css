@@ -16,3 +16,10 @@
     line-height: 0;
     color: var(--active);
 }
+
+.alert {
+    z-index: 200;
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+}
