@@ -1,6 +1,6 @@
 const Node = require('./Node.js')
 
-class Problem {
+export class Problem {
     constructor(init_state, start_position, goal_position) {
         this.init_state = init_state
         this.start_position = start_position
@@ -52,4 +52,4 @@ class Problem {
 
 }
 
-module.exports = Problem
+export default Problem

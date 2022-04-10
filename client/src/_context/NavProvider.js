@@ -34,6 +34,7 @@ export const NavProvider = ({ children }) => {
 
     useEffect(() => {
         if(startX != "" && startY != "") {
+            console.log(startX, startY)
             updateGrid(startY, startX, 2)
         }
         

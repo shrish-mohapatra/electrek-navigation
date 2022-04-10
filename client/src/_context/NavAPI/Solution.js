@@ -1,7 +1,7 @@
 const Node = require('./Node.js')
 const PriorityQueue = require('./PriorityQueue')
 
-class Solution {
+export class Solution {
     constructor(problem) {
         this.problem = problem
     }
@@ -53,4 +53,4 @@ class Solution {
     }
 }
 
-module.exports = Solution
+export default Solution
