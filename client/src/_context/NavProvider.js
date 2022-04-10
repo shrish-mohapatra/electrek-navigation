@@ -1,16 +1,18 @@
 import React, { createContext, useEffect, useState } from 'react'
 import produce from "immer"
-import { generateBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
+import { generateBoard, createEmptyBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
 
 import Problem from './NavAPI/Problem'
 import Solution from './NavAPI/Solution'
+import {planTrip} from './NavAPI/NavAI'
 
 export const NavContext = createContext()
 
 export const NavProvider = ({ children }) => {
     
     const [grid, setGrid] = useState(() => {
-        return generateBoard()
+        // return generateBoard()
+        return createEmptyBoard()
     })
 
     const [startX, setStartX] = useState("");
@@ -34,7 +36,6 @@ export const NavProvider = ({ children }) => {
 
     useEffect(() => {
         if(startX != "" && startY != "") {
-            console.log(startX, startY)
             updateGrid(startY, startX, 2)
         }
         
@@ -45,8 +46,6 @@ export const NavProvider = ({ children }) => {
 
     const updateGrid = (row, col, fill) => {
         if (!boundsCheck(row, col)) return
-
-        console.log('update da grid')
 
         setGrid(g => produce(g, gridCopy => {
             if(fill != 5) {
@@ -75,7 +74,7 @@ export const NavProvider = ({ children }) => {
     const boundsCheck = (row, col) => {        
         if (row < 0 || row >= NUM_ROWS) return false        
         if (col < 0 || col >= NUM_COLS) return false
-        console.log(row, col)
+        // console.log(row, col)
         return true
     }
 
@@ -110,18 +109,17 @@ export const NavProvider = ({ children }) => {
 
                 simulateTrip: async () => {
                     clearPath()
-                    console.log({x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
+                    // console.log({x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
                     
-                    let problem = new Problem(grid, {x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
-                    let solution = new Solution(problem)
+                    // let problem = new Problem(grid, {x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
+                    // let solution = new Solution(problem)
 
-                    let trip = solution.astar()
-                  
+                    let trip = planTrip(grid, startX, startY, endX, endY, startBattery)
                     const positions = generatePositions(trip, [parseInt(startY), parseInt(startX)])
 
-                    console.log(grid)
-                    console.log(positions)
-                    console.log(trip)
+                    // console.log(grid)
+                    // console.log(positions)
+                    // console.log(trip)
 
                     for(let p=0; p< positions.length; p++) {
                         setCarPos(positions[p])
