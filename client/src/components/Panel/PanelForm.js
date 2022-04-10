@@ -20,6 +20,7 @@ const useStyles = makeStyles({
         height: "4vh",
         padding: "14px",
         paddingLeft: "10px",
+        
     },
     disabledTextField: {
         border: "1px solid white",
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
     },
     input: {
         background: "white",
-        color: "white"
+        color: "white",
     },
     planButton: {
         left: "20px",
@@ -197,7 +198,6 @@ const PanelForm = () => {
                     disabled={startX && startY ? false : true}
                     className={startX && startY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setEndY(e.target.value)}
-
                     inputProps={{
                         style: { color: "white" }
                     }}
@@ -223,7 +223,7 @@ const PanelForm = () => {
                 <InputBase
                     required
                     id="outlined-required"
-                    placeholder="%"
+                    placeholder="Charge"
                     value={startBattery}
                     disabled={startX && startY && endX && endY ? false : true}
                     className={startX && startY && endX && endY ? classes.textField : classes.disabledTextField}
@@ -231,6 +231,7 @@ const PanelForm = () => {
                     inputProps={{
                         style: { color: "white" }
                     }}
+                    renderSuffix={() => <p style={{color: "white"}}>%</p>}
                 />
             </Grid>
             <Grid item xs={12}>

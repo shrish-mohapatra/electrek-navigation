@@ -43,13 +43,25 @@ export const generateBoard = () => {
         const row = Array.from(Array(NUM_COLS), () => 0)
 
         for(let j=0; j < NUM_COLS; j++) {
+            // Grid bounds
+            if(i == 0 || j < 2 || i == NUM_ROWS - 1 || j == NUM_COLS - 1) {
+                row[j] = 1
+                continue
+            }
+
             let rand = Math.random()
+
+            // Intersections
             if(i % 2 == 0 && j % 2 == 0) {
                 row[j] = 1
             }
+
+            // Random buildings
             if (i%2 != j%2 && rand < 0.2) {
                 row[j] = 1
             }
+
+            // Random chargers
             if (row[j] !=0 && rand < 0.01) {
                 row[j] = 4
             }

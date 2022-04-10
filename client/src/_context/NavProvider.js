@@ -33,11 +33,11 @@ export const NavProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        if(startX && startY) {
+        if(startX != "" && startY != "") {
             updateGrid(startY, startX, 2)
         }
         
-        if(endX && endY) {
+        if(endX != "" && endY != "") {
             updateGrid(endY, endX, 3)
         }
     }, [startX, startY, endX, endY])
@@ -45,21 +45,36 @@ export const NavProvider = ({ children }) => {
     const updateGrid = (row, col, fill) => {
         if (!boundsCheck(row, col)) return
 
+        console.log('update da grid')
+
         setGrid(g => produce(g, gridCopy => {
-                // for(let r in g) {
-                //     for(let c in g[r]) {
-                //         gridCopy[r][c] = gridCopy[r][c] == fill ? 0 : gridCopy[r][c]
-                //     }
-                // }
+            if(fill != 5) {
+                for(let r in g) {
+                    for(let c in g[r]) {
+                        gridCopy[r][c] = gridCopy[r][c] == fill ? 0 : gridCopy[r][c]
+                    }
+                }
+            }
 
                 gridCopy[row][col] = fill
             }
         ))
     }
 
-    const boundsCheck = (row, col) => {
-        if (row < 0 || row >= NUM_ROWS) return false
+    const clearPath = () => {
+        setGrid(g => produce(g, gridCopy => {
+            for(let r in g) {
+                for(let c in g[r]) {
+                    gridCopy[r][c] = gridCopy[r][c] == 5 ? 0 : gridCopy[r][c]
+                }
+            }
+        }))
+    }
+
+    const boundsCheck = (row, col) => {        
+        if (row < 0 || row >= NUM_ROWS) return false        
         if (col < 0 || col >= NUM_COLS) return false
+        console.log(row, col)
         return true
     }
 
@@ -93,7 +108,7 @@ export const NavProvider = ({ children }) => {
                 },
 
                 simulateTrip: async () => {
-                    
+                    clearPath()
                     console.log({x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
                     
                     let problem = new Problem(grid, {x: parseInt(startX), y: parseInt(startY)}, {x: parseInt(endX), y: parseInt(endY)})
@@ -110,7 +125,7 @@ export const NavProvider = ({ children }) => {
                     for(let p=0; p< positions.length; p++) {
                         setCarPos(positions[p])
                         updateGrid(positions[p][0], positions[p][1], 5)
-                        await timeout(1000)
+                        await timeout(600)
                     }
 
                     handleOpen()

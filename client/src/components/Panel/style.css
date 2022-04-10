@@ -5,7 +5,7 @@
     padding-left: 60px;
     padding-right: 10px;
     background: var(--panel);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
     border-radius: 12px;
     position: absolute;
     right: 48px;

@@ -8,14 +8,13 @@ import Collapse from '@mui/material/Collapse';
 import "./style.css"
 
 function Layout() {
-    const { test, open} = useContext(NavContext)
-
+    const { open} = useContext(NavContext)
 
     return (
         <div className='layout'>
             <div className='title'>
                 <h1>Elektrek</h1>
-                <h2>Navigation</h2>
+                <h2>NAVIGATION</h2>
             </div>
 
             <Grid/>
@@ -24,6 +23,10 @@ function Layout() {
             <Collapse className='alert' in={open}>
                 <Alert sx={{zIndex: 2000}}> Your trip is completed!</Alert>
             </Collapse>
+
+            <div className='authors'>
+                <p>COMP 3106 Final | Developed by Josh Kim, Rajessen Sanassy, Shrish Mohapatra</p>
+            </div>
         </div>
     )
 }

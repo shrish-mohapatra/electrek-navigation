@@ -20,6 +20,12 @@
 .alert {
     z-index: 200;
     position: absolute;
+    top: 48px;
+    right: 48px;
+}
+
+.authors {
+    position: absolute;
+    left: 48px;
     bottom: 24px;
-    left: 24px;
 }
