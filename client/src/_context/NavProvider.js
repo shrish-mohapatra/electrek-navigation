@@ -134,7 +134,7 @@ export const NavProvider = ({ children }) => {
                         
 
                         updateGrid(positions[p][0], positions[p][1], 5)
-                        await timeout(600)
+                        await timeout(300)
                         if(trip[p] == 'c') {
                             setBattery(b => b + 10)
                         } else {

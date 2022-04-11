@@ -117,6 +117,16 @@ class CProblem {
         return node.pathCost() + this.heuristicManhattan(node.position)
     }
 
+    //goal dfs to charger (units away with obstacles)
+    dfsCost(position, position2 = this.goal_position) {
+        let problem = new Problem(this.init_state, position, position2)
+        let solution = new Solution(problem)
+        let path = solution.astar()
+        let path_cost = path.length
+
+        return path_cost
+    }
+
     heuristicManhattan(position, position2 = this.goal_position) {
         // Heuristic function using manhattan distance
         return Math.abs(position.x - position2.x) + Math.abs(position.y - position2.y)
@@ -136,8 +146,9 @@ class CSolution {
         frontier.put(this.problem.f(node), node)
 
         while (!frontier.empty()) {
-            node = frontier.get().value
-            console.log(node)
+            const el = frontier.get()
+            node = el.value
+            console.log(el.priority, node)
 
             if (this.problem.isGoal(node)) return node.action
 

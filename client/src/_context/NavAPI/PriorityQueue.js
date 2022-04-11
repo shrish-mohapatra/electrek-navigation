@@ -7,18 +7,8 @@ export class PriorityQueue {
 
     put(priority, value) {
         let node = new PQNode(priority, value);
-        let curInd = Math.floor(this.queue.length / 2)
-        let prev = curInd
-
-        for (let i = 0; i < this.queue; ++i) {
-            if (this.queue[i].priority > priority) {
-                this.queue.splice(i, 0, node);
-                return
-            }
-        }
-
-        this.queue.push(node);
-        return
+        this.queue.push(node)
+        this.queue = this.queue.sort((n1, n2) => n1.priority - n2.priority)
     }
 
     get() {
