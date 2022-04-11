@@ -199,3 +199,5 @@ export const planTrip = (grid, startX, startY, endX, endY, charge) => {
 
     return trip
 }
+
+export default planTrip

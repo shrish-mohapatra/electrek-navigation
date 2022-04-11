@@ -1,5 +1,5 @@
-const Node = require('./Node.js')
-const PriorityQueue = require('./PriorityQueue')
+import Node from './Node'
+import PriorityQueue from './PriorityQueue.js'
 
 export class Solution {
     constructor(problem) {

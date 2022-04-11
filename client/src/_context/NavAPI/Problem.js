@@ -1,4 +1,4 @@
-const Node = require('./Node.js')
+import Node from './Node'
 
 export class Problem {
     constructor(init_state, start_position, goal_position) {

@@ -1,6 +1,6 @@
-const PQNode = require("./PQNode")
+import PQNode from './PQNode'
 
-class PriorityQueue {
+export class PriorityQueue {
     constructor() {
         this.queue = [];
     }
@@ -31,4 +31,4 @@ class PriorityQueue {
     }
 }
 
-module.exports = PriorityQueue
+export default PriorityQueue

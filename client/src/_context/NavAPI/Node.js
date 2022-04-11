@@ -1,4 +1,4 @@
-class Node {
+export class Node {
     constructor(position, parent=null, action="", path_cost=0) {
         this.position = position
         this.parent = parent
@@ -11,7 +11,7 @@ class Node {
     }
 }
 
-module.exports = Node
+export default Node
 
 /*
     path_cost = trip from previous start to current start
