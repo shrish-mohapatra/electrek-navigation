@@ -7,8 +7,10 @@
     background: var(--panel);
     backdrop-filter: blur(4px);
     border-radius: 12px;
-    position: absolute;
-    right: 48px;
+    margin-left: 48px;
+    /* position: absolute; */
+    /* top: 150px; */
+    /* right: 48px; */
     z-index: 1;
 }
 

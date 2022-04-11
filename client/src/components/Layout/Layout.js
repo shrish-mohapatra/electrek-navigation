@@ -6,9 +6,10 @@ import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
 
 import "./style.css"
+import Battery from '../Battery/Battery';
 
 function Layout() {
-    const { open} = useContext(NavContext)
+    const { open, alertType } = useContext(NavContext)
 
     return (
         <div className='layout'>
@@ -17,11 +18,17 @@ function Layout() {
                 <h2>NAVIGATION</h2>
             </div>
 
-            <Grid/>
-            <Panel/>
+            <div className='content'>
+                <div className='map'>
+                    <Grid/>
+                    <Battery/>
+                </div>
+
+                <Panel/>
+            </div>
 
             <Collapse className='alert' in={open}>
-                <Alert sx={{zIndex: 2000}}> Your trip is completed!</Alert>
+                <Alert sx={{zIndex: 2000}} severity={alertType}> {alertType == 'success' ? "Your trip is completed." : "Not enough charge."} </Alert>
             </Collapse>
 
             <div className='authors'>

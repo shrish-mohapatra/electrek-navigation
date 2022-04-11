@@ -51,6 +51,10 @@ export class Problem {
         return Math.abs(position.x - position2.x) + Math.abs(position.y - position2.y)
     }
 
+    heuristic_value(position, position2) {
+        return Math.abs(position.x - position2.x) + Math.abs(position.y - position2.y) + Math.abs(position2.x - this.goal_position.x) + Math.abs(position2.y - this.goal_position.y)
+    }
+
     manhattan_chargers(position) {
         const chargers = []
 
@@ -59,7 +63,8 @@ export class Problem {
                 if(this.init_state[y][x] == 4) {
                     chargers.push({
                         x,y,
-                        dist: this.heuristic_manhattan(position, {x,y})
+                        dist: this.heuristic_manhattan(position, {x,y}),
+                        hval: this.heuristic_value(position, {x,y})
                     })
                 }
             }

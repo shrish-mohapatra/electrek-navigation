@@ -1,0 +1,24 @@
+.status {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.battery {
+    height: 24px;
+    border-radius: 2px;
+    background-color: var(--road);
+    margin-left: 12px;
+}
+
+.battery-bar {
+    height: 24px;
+    border-radius: 2px;
+    background-color: var(--active);
+    transition: width 100ms ease-in-out;
+}
+
+
+.position {
+    margin-left: 24px;
+}

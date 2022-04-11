@@ -4,9 +4,6 @@ import { NavContext } from '../../_context/NavProvider'
 import "./style.css"
 
 // Grid parameters
-const NUM_ROWS = 20
-const NUM_COLS = 65
-
 const CELL_SIZE = 32
 const CELL_MARGIN = 1
 
@@ -17,7 +14,7 @@ const ISO_Y = -25;
 const ISO_Z = 8.8;
 
 function Grid() {
-    const {grid, onGridSelect, carPos} = useContext(NavContext)
+    const {grid, onGridSelect, carPos, NUM_COLS, NUM_ROWS} = useContext(NavContext)
 
     return (
         <div className='grid'>
