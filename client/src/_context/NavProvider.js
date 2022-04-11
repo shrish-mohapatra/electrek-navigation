@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import produce from "immer"
 import { generateBoard, createEmptyBoard, NUM_ROWS, NUM_COLS, generatePositions } from './NavHelper'
 
-import { planTrip } from './NavAPI/NavAI'
+import { planTrip } from './NavAPI/Nav'
 
 export const NavContext = createContext()
 
@@ -103,6 +103,7 @@ export const NavProvider = ({ children }) => {
                 alertType,
 
                 onGridSelect: (row, col) => {
+                    console.log(grid)
                     if (!boundsCheck(row, col)) return
 
                     if (!startX || !startY) {
@@ -120,7 +121,7 @@ export const NavProvider = ({ children }) => {
 
                     let trip = planTrip(grid, startX, startY, endX, endY, startBattery)
 
-                    if(trip == '') {
+                    if(trip == '' || trip == -1) {
                         handleOpen('error')
                         return
                     }

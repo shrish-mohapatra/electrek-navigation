@@ -8,9 +8,9 @@
     backdrop-filter: blur(4px);
     border-radius: 12px;
     margin-left: 48px;
-    /* position: absolute; */
-    /* top: 150px; */
-    /* right: 48px; */
+    position: absolute;
+    top: 150px;
+    right: 48px;
     z-index: 1;
 }
 

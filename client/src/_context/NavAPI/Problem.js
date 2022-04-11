@@ -1,11 +1,10 @@
 const Node = require('./Node.js')
 
 export class Problem {
-    constructor(init_state, start_position, goal_position, charge) {
+    constructor(init_state, start_position, goal_position) {
         this.init_state = init_state
         this.start_position = start_position
         this.goal_position = goal_position
-        this.charge = charge
 
         this.max_X = init_state[0].length
         this.max_Y = init_state.length
@@ -50,29 +49,6 @@ export class Problem {
     heuristic_manhattan(position, position2=this.goal_position) {
         return Math.abs(position.x - position2.x) + Math.abs(position.y - position2.y)
     }
-
-    heuristic_value(position, position2) {
-        return Math.abs(position.x - position2.x) + Math.abs(position.y - position2.y) + Math.abs(position2.x - this.goal_position.x) + Math.abs(position2.y - this.goal_position.y)
-    }
-
-    manhattan_chargers(position) {
-        const chargers = []
-
-        for(let y=0; y<this.init_state.length; y++) {
-            for(let x=0; x<this.init_state[y].length; x++) {
-                if(this.init_state[y][x] == 4) {
-                    chargers.push({
-                        x,y,
-                        dist: this.heuristic_manhattan(position, {x,y}),
-                        hval: this.heuristic_value(position, {x,y})
-                    })
-                }
-            }
-        }
-
-        return chargers
-    }
-
 }
 
 export default Problem
