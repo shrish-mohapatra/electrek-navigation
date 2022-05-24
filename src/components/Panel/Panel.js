@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { NavContext } from '../../_context/NavProvider'
+import React from 'react'
 import PanelForm from './PanelForm'
 import "./style.css"
 

@@ -2,25 +2,27 @@
 
 /* Color variables */
 :root {
-  --active: #A788FF;
+  --active: #7f64c8;
   --bg: linear-gradient(180deg, #222429 0%, #151516 100%);
-  --panel: rgba(30, 33, 37, 0.79);
   --text: rgb(214, 214, 214);
+  --panel-text: #fff;
+  --panel-bg: rgba(0, 0, 0, 0.37);
 
-  --road: #292C31;
-  --building: #6A727E;
+  --road: #ffffff18;
+  --building: #ffffff57;
   --start: #47BF34;
   --dest: #BF347F;
   --charge: #3744bd;
-  --visited: #7991bb;
 
   --font-family: 'Inter', sans-serif;
-  --text-field: rgb(255, 255, 255);
 }
 
 body {
   font-family: var(--font-family);
   background: var(--bg);
+  background-image: url(assets/background.jpg);
+  background-size: cover;
+  background-position: center;
   color: var(--text);
   height: 100vh;
 }

@@ -12,10 +12,10 @@ import { NavContext } from '../../_context/NavProvider';
 
 const useStyles = makeStyles({
     root: {
-        background: "white"
+        background: "var(--panel-text)"
     },
     textField: {
-        border: "1px solid white",
+        border: "1px solid var(--panel-text)",
         borderRadius: "10px",
         height: "4vh",
         padding: "14px",
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
         
     },
     disabledTextField: {
-        border: "1px solid white",
+        border: "1px solid var(--panel-text)",
         opacity: "0.2",
         borderRadius: "10px",
         height: "4vh",
@@ -31,8 +31,8 @@ const useStyles = makeStyles({
         paddingLeft: "10px",
     },
     input: {
-        background: "white",
-        color: "white",
+        background: "var(--panel-text)",
+        color: "var(--panel-text)",
     },
     planButton: {
         left: "20px",
@@ -44,7 +44,7 @@ const useStyles = makeStyles({
     circle: {
         height: "30px",
         width: "30px",
-        backgroundColor: "#A788FF",
+        backgroundColor: "var(--active)",
         borderRadius: "50%",
         color: 'white',
         position: 'absolute',
@@ -68,9 +68,9 @@ const useStyles = makeStyles({
         opacity: "0.2",
         height: "30px",
         width: "30px",
-        backgroundColor: "#A788FF",
+        backgroundColor: "var(--active)",
         borderRadius: "50%",
-        color: 'white',
+        color: 'var(--panel-text)',
         position: 'absolute',
         left: "-25px",
         top: "35px",
@@ -81,13 +81,13 @@ const useStyles = makeStyles({
         position: 'absolute',
         left: "10px",
         top: "5px",
-        color: 'white',
+        color: 'var(--panel-text)',
     }
 });
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: "#FFFFFF",
-    backgroundColor: "#A788FF",
+    backgroundColor: "var(--active)",
     borderRadius: "20px",
     width: "300px",
     margin: "0px auto",
@@ -139,7 +139,7 @@ const PanelForm = () => {
                     value={startX}
                     onChange={(e) => CheckInt(e) && setStartX(e.target.value)}
                     inputProps={{
-                        style: { color: "white" }
+                        style: { color: "var(--panel-text)" }
                     }}
                 />
             </Grid>
@@ -154,7 +154,7 @@ const PanelForm = () => {
                     onChange={(e) => CheckInt(e) && setStartY(e.target.value)}
 
                     inputProps={{
-                        style: { color: "white" }
+                        style: { color: "var(--panel-text)" }
                     }}
                 />
             </Grid>
@@ -185,7 +185,7 @@ const PanelForm = () => {
                     onChange={(e) => CheckInt(e) && setEndX(e.target.value)}
 
                     inputProps={{
-                        style: { color: "white" }
+                        style: { color: "var(--panel-text)" }
                     }}
                 />
             </Grid>
@@ -199,7 +199,7 @@ const PanelForm = () => {
                     className={startX && startY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setEndY(e.target.value)}
                     inputProps={{
-                        style: { color: "white" }
+                        style: { color: "var(--panel-text)" }
                     }}
                 />
             </Grid>
@@ -229,9 +229,9 @@ const PanelForm = () => {
                     className={startX && startY && endX && endY ? classes.textField : classes.disabledTextField}
                     onChange={(e) => CheckInt(e) && setStartBattery(e.target.value)}
                     inputProps={{
-                        style: { color: "white" }
+                        style: { color: "var(--panel-text)" }
                     }}
-                    renderSuffix={() => <p style={{color: "white"}}>%</p>}
+                    renderSuffix={() => <p style={{color: "var(--panel-text)"}}>%</p>}
                 />
             </Grid>
             <Grid item xs={12}>
