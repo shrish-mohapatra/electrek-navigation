@@ -14,7 +14,7 @@ function Layout() {
     return (
         <div className='layout'>
             <div className='title'>
-                <h1>Elektrek</h1>
+                <h1>elektrek</h1>
                 <h2>NAVIGATION</h2>
             </div>
 
