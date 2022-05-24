@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/elektrek-navigation/static/css/main.884ce7ee.css",
-    "main.js": "/elektrek-navigation/static/js/main.f97703ae.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/elektrek-navigation/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/background.jpg": "/elektrek-navigation/static/media/background.24f46ec90e96ff277cf1.jpg",
-    "index.html": "/elektrek-navigation/index.html",
-    "main.884ce7ee.css.map": "/elektrek-navigation/static/css/main.884ce7ee.css.map",
-    "main.f97703ae.js.map": "/elektrek-navigation/static/js/main.f97703ae.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/elektrek-navigation/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.css": "/electrek-navigation/static/css/main.0e0b3fbf.css",
+    "main.js": "/electrek-navigation/static/js/main.78811f20.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/electrek-navigation/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/background.jpg": "/electrek-navigation/static/media/background.24f46ec90e96ff277cf1.jpg",
+    "index.html": "/electrek-navigation/index.html",
+    "main.0e0b3fbf.css.map": "/electrek-navigation/static/css/main.0e0b3fbf.css.map",
+    "main.78811f20.js.map": "/electrek-navigation/static/js/main.78811f20.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/electrek-navigation/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.884ce7ee.css",
-    "static/js/main.f97703ae.js"
+    "static/css/main.0e0b3fbf.css",
+    "static/js/main.78811f20.js"
   ]
 }
